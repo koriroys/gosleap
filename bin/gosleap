@@ -4,10 +4,4 @@ gosling_image = "#{__dir__}/gosling.png"
 sparkle_image = "#{__dir__}/heygurl.png"
 imageleap = "#{__dir__}/imageleap"
 
-command = "#{imageleap} -i #{gosling_image} -p #{sparkle_image} -v"
-
-p command
-
-system(command)
-
-# system("#{imageleap} -v")
+system("#{imageleap} -i #{gosling_image} -p #{sparkle_image}")
