@@ -6,11 +6,12 @@
 
 const char* program_name;
 double seconds;
-const char* short_options = "hs:n:i:e:v";
+const char* short_options = "hs:n:i:e:p:v";
 const struct option long_options[] = {
     { "help",    0, NULL, 'h' },
     { "seconds", 1, NULL, 's' },
     { "image",   1, NULL, 'i' },
+    { "sparkle", 1, NULL, 'p' },
     { "verbose", 0, NULL, 'v' },
     { NULL,      0, NULL, 0   }   /* Required at end of array.  */
 };
@@ -26,6 +27,7 @@ void print_usage (FILE* stream, int exit_code) {
              "  -h  --help           Display this usage information.\n"
              "  -s  --seconds n      Animate for n seconds. (default: 2.0)\n"
              "  -i  --image          Custom image to use.\n"
+             "  -p  --sparkle        Custom sparkle image to use.\n"
              "  -v  --verbose        Print verbose messages.\n");
     exit (exit_code);
 }
@@ -145,24 +147,27 @@ CAEmitterLayer * getEmitterForImageInFrame (CGImageRef sparkleImage, CGSize imag
     return emitter;
 }
 
-void animateImage () {
+void animateImage (const char* goslingPathString, const char* sparklePathString) {
+    NSString *goslingImagePath = [NSString stringWithFormat: @"%s" , goslingPathString];
+    NSString *sparkleImagePath = [NSString stringWithFormat: @"%s" , sparklePathString];
+
     // Objective C
     [NSApplication sharedApplication];
     CGRect screen = NSScreen.mainScreen.frame;
     NSWindow *window = createTransparentWindow(screen);
     NSView *view = [[NSView alloc] initWithFrame:screen];
-    // NSString *imagePath = [NSString stringWithFormat: @"%s" , imagePathString];
+    // NSString *imagePath = [NSString stringWithFormat: @"%s" , 1];
 
     // NSString *folder = [NSHomeDirectory() stringByAppendingPathComponent:@".unicornleap"];
     // NSString *folder = getcwd;
     // NSFileManager *NSFm;
-    NSString *folder = @"../";
+    // NSString *folder = @"./";
     // NSString *folder = [[NSFm currentDirectoryPath] stringByAppendingPathComponent];
-    NSString *imagePath = [folder stringByAppendingPathComponent:@"gosling.png"];
-    NSString *sparklePath = [folder stringByAppendingPathComponent:@"heygurl.png"];
+    // NSString *imagePath = [folder stringByAppendingPathComponent:@"gosling.png"];
+    // NSString *sparklePath = [folder stringByAppendingPathComponent:@"heygurl.png"];
 
-    CGSize imageSize = getImageSize(imagePath);
-    CGImageRef cgimage = createCGImage(imagePath);
+    CGSize imageSize = getImageSize(goslingImagePath);
+    CGImageRef cgimage = createCGImage(goslingImagePath);
     CGMutablePathRef arcPath;
     arcPath = pathInFrameForSize(screen, imageSize);
     CALayer *layer;
@@ -174,7 +179,7 @@ void animateImage () {
 
 
 
-    CGDataProviderRef sparkleSource = CGDataProviderCreateWithFilename([sparklePath UTF8String]);
+    CGDataProviderRef sparkleSource = CGDataProviderCreateWithFilename([sparkleImagePath UTF8String]);
     CGImageRef sparkleImage = CGImageCreateWithPNGDataProvider(sparkleSource, NULL, true, 0);
     emitter = getEmitterForImageInFrame(sparkleImage, imageSize);
 
@@ -192,7 +197,8 @@ void animateImage () {
 
     // Wait for animation to finish
     [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow: seconds - waitFor + 0.2]];
-    [imagePath release];
+    [goslingImagePath release];
+    [goslingImagePath release];
     [view release];
     [window release];
     return;
@@ -205,7 +211,8 @@ int main (int argc, char * argv[]) {
     char* s = NULL;
     char* i = NULL;
 
-    const char* image;
+    const char* image_path;
+    const char* sparkle_path;
     int verbose = 0, num = 1;
     double sec = 2.0;
 
@@ -225,7 +232,11 @@ int main (int argc, char * argv[]) {
                 break;
 
             case 'i':
-                image = optarg;
+                image_path = optarg;
+                break;
+
+            case 'p':
+                sparkle_path = optarg;
                 break;
 
             case 'h': print_usage(stdout, 0);
@@ -242,10 +253,11 @@ int main (int argc, char * argv[]) {
 
     if (verbose) {
         printf("Seconds: %f\n", seconds);
-        printf("Image: %s\n", image);
+        printf("Image: %s\n", image_path);
+        printf("Sparkle: %s\n", sparkle_path);
     }
 
-    animateImage();
+    animateImage(image_path, sparkle_path);
 
     return 0;
 }
