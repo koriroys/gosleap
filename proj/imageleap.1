@@ -1,0 +1,43 @@
+.\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
+.\"See Also:
+.\"man mdoc.samples for a complete listing of options
+.\"man mdoc for the short list of editing options
+.\"/usr/share/misc/mdoc.template
+.Dd 3/5/13
+.Dt imageleap 1
+.Os Darwin
+.Sh NAME
+.Nm imageleap
+.Nd display a flying image
+.Sh SYNOPSIS
+.Nm
+.Op Fl vh                \" [-vh]
+.Op Fl s Ar seconds      \" [-a path]
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+.Nm
+makes a image fly across your screen. That's all it does.
+.Sh OPTIONS
+.Bl -tag -width "-s, --seconds n "
+.It Fl s , \-seconds Ar n
+Number of seconds for the animation to last.
+.br
+Defaults to
+.Ar 2.0
+.It Fl n , \-number Ar n
+Number of images to display.
+.br
+Defaults to
+.Ar 1
+.It Fl h , \-help
+Display help
+.It Fl v
+Slightly more output
+.El                      \" Ends the list
+.Pp
+.Sh FILES                \" File used or created by the topic of the man page
+.Bl -tag -width "~/.imageleap/image.png" -compact
+.It Pa ~/.imageleap/image.png
+The magic image. This must exist and be a valid PNG.
+.It Pa ~/.imageleap/sparkle.png
+The image for the sparkle effect. This must exist and be a valid PNG.
+.El                      \" Ends the list

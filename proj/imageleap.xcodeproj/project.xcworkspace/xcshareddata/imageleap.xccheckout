@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6454C814-19C6-46EA-8C14-9E77BD0E7B49</string>
+	<key>IDESourceControlProjectName</key>
+	<string>imageleap</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>62733D46-5D8C-4B0F-B338-C099491106C7</key>
+		<string>ssh://github.com/jgdavey/unicornleap.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>imageleap.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>62733D46-5D8C-4B0F-B338-C099491106C7</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/jgdavey/unicornleap.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>62733D46-5D8C-4B0F-B338-C099491106C7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>62733D46-5D8C-4B0F-B338-C099491106C7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>imageleap</string>
+		</dict>
+	</array>
+</dict>
+</plist>
