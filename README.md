@@ -1,6 +1,6 @@
 # Gosleap
 
-TODO: Write a gem description
+![ryan gosling jumps across the screen](https://raw.github.com/koriroys/gosleap/master/gosleap.gif)
 
 ## Installation
 
