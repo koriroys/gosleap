@@ -1,5 +1,7 @@
 # Gosleap
 
+## Usage
+
 ![ryan gosling jumps across the screen](https://raw.github.com/koriroys/gosleap/master/gosleap.gif)
 
 ## Installation
@@ -12,13 +14,9 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install it yourself:
 
     $ gem install gosleap
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
