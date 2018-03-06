@@ -1,5 +1,7 @@
 # Gosleap
 
+Only works on OSX
+
 ## Usage
 
 ![ryan gosling jumps across the screen](https://raw.github.com/koriroys/gosleap/master/gosleap.gif)
